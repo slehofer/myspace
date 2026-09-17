@@ -30,14 +30,15 @@
 body {
   background-color: var(--de-bg-dark);
   background-image:
-    radial-gradient(circle at 50% 0%, rgba(217, 107, 39, 0.12), transparent 70%),
-    radial-gradient(circle at 10% 40%, rgba(46, 89, 89, 0.18), transparent 50%),
-    linear-gradient(180deg, #101616 0%, #0a0d0d 100%);
+    radial-gradient(circle at 50% 0%, rgba(217, 107, 39, 0.18), transparent 70%),
+    radial-gradient(circle at 10% 40%, rgba(46, 89, 89, 0.25), transparent 50%),
+    radial-gradient(circle at 85% 75%, rgba(184, 84, 29, 0.15), transparent 55%),
+    linear-gradient(180deg, #0e1414 0%, #080a0a 100%);
   background-attachment: fixed;
   color: var(--de-parchment);
-  font-family: "Lucida Grande", "Trebuchet MS", Verdana, Helvetica, Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Grande", Verdana, Helvetica, Arial, sans-serif;
   font-size: 12px;
-  line-height: 1.4;
+  line-height: 1.45;
   padding-bottom: 50px;
 }
 
@@ -104,12 +105,22 @@ a:hover {
 
 /* Page Container */
 .container {
-  max-width: 950px;
+  max-width: 980px;
   margin: 20px auto;
   background-color: var(--de-bg-card);
-  border: 1px solid var(--myspace-border-color);
-  box-shadow: 0 0 25px rgba(0, 0, 0, 0.8), 0 0 2px var(--de-orange-bright);
-  padding: 15px;
+  border: 2px solid #2e4142;
+  box-shadow: 0 0 35px rgba(0, 0, 0, 0.95), 0 0 4px var(--de-orange-bright);
+  padding: 18px;
+  position: relative;
+}
+
+/* Paint Stroke Header Ornament */
+.container::before {
+  content: "";
+  position: absolute;
+  top: -6px; left: 20px; right: 20px;
+  height: 4px;
+  background: linear-gradient(90deg, transparent 0%, var(--de-orange-bright) 20%, var(--de-yellow-gold) 50%, var(--de-teal-accent) 80%, transparent 100%);
 }
 
 /* Myspace Top Banner Header */
@@ -198,8 +209,9 @@ a:hover {
 /* Section Box Styles */
 .box {
   border: 1px solid var(--myspace-border-color);
-  background-color: #172021;
-  margin-bottom: 15px;
+  background-color: #162122;
+  margin-bottom: 16px;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
 }
 
 .box-header {
@@ -207,18 +219,19 @@ a:hover {
   color: var(--de-parchment);
   font-weight: bold;
   font-size: 12px;
-  padding: 5px 10px;
+  padding: 6px 12px;
   border-bottom: 1px solid var(--myspace-border-color);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: Verdana, sans-serif;
-  letter-spacing: 0.5px;
+  font-family: Georgia, serif;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
 }
 
 .box-header.de-accent {
-  background: linear-gradient(90deg, var(--de-teal-dark) 0%, var(--de-bg-card-header) 100%);
-  border-left: 3px solid var(--de-orange-bright);
+  background: linear-gradient(90deg, #182d2e 0%, #2b3d3e 100%);
+  border-left: 4px solid var(--de-orange-bright);
 }
 
 .box-body {
@@ -410,6 +423,120 @@ a:hover {
   color: #ebdcb2;
 }
 
+/* Thought Cabinet Feature */
+.thought-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.thought-card {
+  background: #111a1b;
+  border: 1px solid #324647;
+  padding: 10px;
+  position: relative;
+  border-top: 3px solid var(--de-orange-bright);
+}
+
+.thought-card.internalized {
+  border-top-color: var(--de-yellow-gold);
+}
+
+.thought-title {
+  font-weight: bold;
+  font-size: 12px;
+  font-family: Georgia, serif;
+  color: var(--de-yellow-gold);
+  margin-bottom: 4px;
+}
+
+.thought-status {
+  font-size: 10px;
+  color: var(--de-orange-bright);
+  font-weight: bold;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.thought-desc {
+  font-size: 11px;
+  color: var(--de-parchment-dim);
+  line-height: 1.35;
+}
+
+.thought-bonus {
+  margin-top: 6px;
+  font-size: 10px;
+  color: #5dade2;
+  font-weight: bold;
+}
+
+/* Skill Checks Dialogue Box & Interactive Dice Roll */
+.dialogue-box {
+  background: #0d1415;
+  border: 1px solid var(--de-orange-bright);
+  padding: 12px;
+  font-family: Georgia, serif;
+  position: relative;
+}
+
+.dialogue-header {
+  font-size: 11px;
+  color: var(--de-orange-bright);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 1px solid #293839;
+  padding-bottom: 4px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.skill-check-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.check-btn {
+  background: #1c2a2b;
+  border: 1px solid var(--de-teal-accent);
+  color: var(--de-parchment);
+  padding: 6px 12px;
+  font-size: 11px;
+  font-family: sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.check-btn:hover {
+  background: var(--de-orange-bright);
+  color: #000;
+  border-color: var(--de-yellow-gold);
+}
+
+.dice-result-panel {
+  background: #152021;
+  border: 1px dashed #3a5052;
+  padding: 10px;
+  min-height: 70px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.result-success {
+  color: #52be80;
+  font-weight: bold;
+}
+
+.result-failure {
+  color: #e74c3c;
+  font-weight: bold;
+}
+
 /* Skill Thoughts / Internal Monologue Box */
 .skill-grid {
   display: grid;
@@ -420,15 +547,14 @@ a:hover {
 .skill-card {
   background: #151f20;
   border: 1px solid #2a3a3b;
-  padding: 8px;
-  border-radius: 3px;
+  padding: 9px;
   position: relative;
 }
 
-.skill-card.inland-empire { border-left: 3px solid #9b59b6; }
-.skill-card.shivers { border-left: 3px solid #3498db; }
-.skill-card.electrochemistry { border-left: 3px solid #e74c3c; }
-.skill-card.drama { border-left: 3px solid #f1c40f; }
+.skill-card.inland-empire { border-left: 3px solid #be79df; }
+.skill-card.shivers { border-left: 3px solid #5dade2; }
+.skill-card.electrochemistry { border-left: 3px solid #ec7063; }
+.skill-card.drama { border-left: 3px solid #f4d03f; }
 .skill-card.half-light { border-left: 3px solid #e67e22; }
 .skill-card.conceptualization { border-left: 3px solid #1abc9c; }
 

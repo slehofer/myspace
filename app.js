@@ -3,7 +3,7 @@ import { audioEngine } from './audio-player.js';
 const initialComments = [
   {
     name: 'Lt. Kim Kitsuragi',
-    avatar: 'public/images/IMG_1974.webp',
+    avatar: 'public/images/kim_kitsuragi_portrait.png',
     date: 'Oct 14, 2024 at 10:14 AM',
     text: 'Detective. I see you have set up a personal webpage on this "network". We still have a body to examine behind the Whirling-in-Rags. Please focus on the investigation.'
   },
@@ -188,10 +188,73 @@ function renderApp() {
             </div>
           </div>
 
-          <!-- Internal Skill Thoughts (Disco Elysium Special Feature) -->
+          <!-- Active Thought Cabinet -->
+          <div class="box" id="thoughts">
+            <div class="box-header de-accent">
+              <span>Thought Cabinet (Internalized Thoughts)</span>
+            </div>
+            <div class="box-body">
+              <div class="thought-grid">
+                <div class="thought-card internalized">
+                  <div class="thought-title">Volumetric Shitcompressor</div>
+                  <div class="thought-status">★ Internalized (3h 20m)</div>
+                  <div class="thought-desc">Compresses all panic, hangover, and existential dread into a dense, manageable core. Allows you to speak to cafeteria managers without crying.</div>
+                  <div class="thought-bonus">+1 Endurance, +1 Authority</div>
+                </div>
+
+                <div class="thought-card internalized">
+                  <div class="thought-title">The Jam Mystery</div>
+                  <div class="thought-status">★ Internalized (2h 00m)</div>
+                  <div class="thought-desc">Why is there so much traffic in Martinaise? Is it cocaine? Heavy machinery? Or the crushing weight of global capital?</div>
+                  <div class="thought-bonus">+1 Encylopedia, +1 Conceptualization</div>
+                </div>
+
+                <div class="thought-card">
+                  <div class="thought-title">Revacholian Nationhood</div>
+                  <div class="thought-status">⏳ Researching (78%)</div>
+                  <div class="thought-desc">The spirit of old Revachol flows through your hangover. Heavy scent of lilacs and tears.</div>
+                  <div class="thought-bonus">+2 Fierce Pride (-1 Savior Faire)</div>
+                </div>
+
+                <div class="thought-card">
+                  <div class="thought-title">Guillaume Le Million</div>
+                  <div class="thought-status">⏳ Researching (45%)</div>
+                  <div class="thought-desc">Your hair is a legend. Your necktie is a warning. You were born to dance under strobe lights.</div>
+                  <div class="thought-bonus">+1 Electrochemistry</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Dialogue & Skill Check Simulator -->
+          <div class="box" id="interrogate">
+            <div class="box-header de-accent">
+              <span>Interrogation Simulator (Roll 2d6 Skill Check)</span>
+            </div>
+            <div class="box-body">
+              <div class="dialogue-box">
+                <div class="dialogue-header">
+                  <span>RCM Skill Check Console</span>
+                  <span style="font-size: 10px; color: var(--de-parchment-dim);">2d6 + Attribute vs Target DC</span>
+                </div>
+                <div class="skill-check-btns">
+                  <button type="button" class="check-btn" data-skill="Inland Empire" data-dc="10">🔮 Inland Empire (DC 10)</button>
+                  <button type="button" class="check-btn" data-skill="Electrochemistry" data-dc="8">🍸 Electrochemistry (DC 8)</button>
+                  <button type="button" class="check-btn" data-skill="Drama" data-dc="12">🎭 Drama (DC 12)</button>
+                  <button type="button" class="check-btn" data-skill="Shivers" data-dc="11">🌧️ Shivers (DC 11)</button>
+                  <button type="button" class="check-btn" data-skill="Half Light" data-dc="13">⚡ Half Light (DC 13)</button>
+                </div>
+                <div id="checkResult" class="dice-result-panel">
+                  <em>Select a skill check above to roll dice and test Harry's psyche...</em>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Internal Skill Thoughts -->
           <div class="box" id="skills">
             <div class="box-header de-accent">
-              <span>Internal Monologue (Active Skill Checks)</span>
+              <span>Internal Monologue (Active Voice Checks)</span>
             </div>
             <div class="box-body">
               <div class="skill-grid">
@@ -234,6 +297,26 @@ function renderApp() {
                     "Sire, Kim Kitsuragi is indeed thy truest companion. Place him at the pinnacle of thy Top 8 list!"
                   </div>
                 </div>
+
+                <div class="skill-card half-light">
+                  <div class="skill-name" style="color: #e67e22;">
+                    <span>Half Light</span>
+                    <span>[Legendary: Success]</span>
+                  </div>
+                  <div class="skill-text">
+                    "THE CEILING FAN IS YOUR ENEMY! THROW A SHOE AT IT BEFORE IT ATTACKS!"
+                  </div>
+                </div>
+
+                <div class="skill-card conceptualization">
+                  <div class="skill-name" style="color: #1abc9c;">
+                    <span>Conceptualization</span>
+                    <span>[Heroic: Success]</span>
+                  </div>
+                  <div class="skill-text">
+                    "The orange border on Kim's profile photo reflects the warmth of true camaraderie amid Revacholian winter."
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -254,7 +337,7 @@ function renderApp() {
                   <div class="gallery-caption">Thought Cabinet & Neural Links</div>
                 </div>
                 <div class="gallery-item">
-                  <img src="public/images/IMG_1974.webp" alt="Lieutenant Kim Kitsuragi">
+                  <img src="public/images/kim_kitsuragi_portrait.png" alt="Lieutenant Kim Kitsuragi">
                   <div class="gallery-caption">Lt. Kim Kitsuragi (#1 Friend)</div>
                 </div>
               </div>
@@ -273,7 +356,7 @@ function renderApp() {
                 <!-- BEST FRIEND #1: KIM KITSURAGI -->
                 <div class="friend-card number-one">
                   <div class="badge-number-one">★ #1 BEST FRIEND</div>
-                  <img class="friend-img" src="public/images/IMG_1974.webp" alt="Kim Kitsuragi">
+                  <img class="friend-img" src="public/images/kim_kitsuragi_portrait.png" alt="Kim Kitsuragi">
                   <a class="friend-name" href="#kim">Kim Kitsuragi</a>
                   <span style="font-size: 9px; color: var(--de-parchment-dim);">RCM Lieutenant</span>
                 </div>
@@ -356,6 +439,62 @@ function renderApp() {
   setupAudioUI();
   renderComments();
   setupCommentForm();
+  setupSkillCheckSimulator();
+}
+
+function setupSkillCheckSimulator() {
+  const btns = document.querySelectorAll('.check-btn');
+  const resultPanel = document.getElementById('checkResult');
+
+  if (!btns.length || !resultPanel) return;
+
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const skill = btn.getAttribute('data-skill');
+      const dc = parseInt(btn.getAttribute('data-dc'), 10);
+
+      const d1 = Math.floor(Math.random() * 6) + 1;
+      const d2 = Math.floor(Math.random() * 6) + 1;
+      const total = d1 + d2;
+      const success = total >= dc;
+
+      let dialogue = '';
+      if (skill === 'Inland Empire') {
+        dialogue = success
+          ? '"The necktie whispers secrets of the universe to you... It says Kim is looking out for you."'
+          : '"The tie remains silent. It is just a piece of polyester."';
+      } else if (skill === 'Electrochemistry') {
+        dialogue = success
+          ? '"OH YEAH BABY! The synth beats pulse through your veins like pure adrenaline!"'
+          : '"Your liver groans in disapproval. Maybe just water for now..."';
+      } else if (skill === 'Drama') {
+        dialogue = success
+          ? '"Verily, sire! Thy top 8 list is a masterpiece of aristocratic social posturing!"'
+          : '"Thou hast stumbled over thy words, my liege. A pathetic display!"';
+      } else if (skill === 'Shivers') {
+        dialogue = success
+          ? '"A cold wind blows through the Whirling-in-Rags courtyard. Kim adjusts his jacket."'
+          : '"You feel cold, but it\'s just draft from under the door."';
+      } else if (skill === 'Half Light') {
+        dialogue = success
+          ? '"YOU DOMINATED THE CONVERSATION! EVERYONE IS TERRIFIED OF YOUR RAW POWER!"'
+          : '"You flinched. Lt. Kitsuragi gently clears his throat."';
+      }
+
+      resultPanel.innerHTML = `
+        <div style="font-family: sans-serif; font-weight: bold; margin-bottom: 4px;">
+          CHECK: <span style="color: var(--de-orange-bright);">${skill}</span> [DC ${dc}]
+        </div>
+        <div>
+          Rolled 2d6: <strong>${d1} + ${d2} = ${total}</strong>
+          ---> <span class="${success ? 'result-success' : 'result-failure'}">${success ? 'CHECK SUCCESS!' : 'CHECK FAILURE!'}</span>
+        </div>
+        <div style="margin-top: 6px; font-style: italic; color: var(--de-parchment);">
+          ${dialogue}
+        </div>
+      `;
+    });
+  });
 }
 
 let commentsData = [...initialComments];
